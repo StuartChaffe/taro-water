@@ -58,22 +58,13 @@ function origin_deregister_styles() {
 		wp_dequeue_style( 'wc-block-style' );
 	}
 }
-// add_action( 'wp_enqueue_scripts', 'origin_deregister_styles', 100);
-function joint_acf_block_render_callback( $block ) {
-	$slug = str_replace('acf/', '', $block['name']);
-
-	if( file_exists( get_theme_file_path("/blocks/{$slug}.php") ) ) {
-		include( get_theme_file_path("/blocks/{$slug}.php") );
-	}
-}
-
-add_filter( 'allowed_block_types_all', 'joint_allowed_block_types' );
+add_filter( 'allowed_block_types_all', 'taro_allowed_block_types' );
  
-function joint_allowed_block_types( $allowed_blocks ) {
+function taro_allowed_block_types( $allowed_blocks ) {
  
 	return array(
-		'acf/custom-block-taro-water-1',
-		'acf/custom-block-taro-water-2',
+		'acf/custom-block-tarowater-1',
+		'acf/custom-block-tarowater-2',
 		
 		'core/paragraph',
 		'core/heading',
